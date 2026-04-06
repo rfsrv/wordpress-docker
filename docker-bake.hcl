@@ -31,7 +31,9 @@ target "apache-83" {
     "${REGISTRY}/wordpress:8.3-apache",
     "${REGISTRY}/wordpress:apache",
   ]
-  platforms = ["linux/amd64", "linux/arm64"]
+  cache-from = ["type=registry,ref=${REGISTRY}/wordpress:cache-apache-83"]
+  cache-to   = ["type=registry,ref=${REGISTRY}/wordpress:cache-apache-83,mode=max"]
+  platforms  = ["linux/amd64", "linux/arm64"]
 }
 
 target "apache-82" {
@@ -42,7 +44,9 @@ target "apache-82" {
   tags = [
     "${REGISTRY}/wordpress:8.2-apache",
   ]
-  platforms = ["linux/amd64", "linux/arm64"]
+  cache-from = ["type=registry,ref=${REGISTRY}/wordpress:cache-apache-82"]
+  cache-to   = ["type=registry,ref=${REGISTRY}/wordpress:cache-apache-82,mode=max"]
+  platforms  = ["linux/amd64", "linux/arm64"]
 }
 
 # ── fpm-alpine ────────────────────────────────────────────────────────────────
@@ -56,6 +60,8 @@ target "fpm-alpine-83" {
     "${REGISTRY}/wordpress:8.3-fpm-alpine",
     "${REGISTRY}/wordpress:fpm-alpine",
   ]
-  platforms = ["linux/amd64", "linux/arm64"]
+  cache-from = ["type=registry,ref=${REGISTRY}/wordpress:cache-fpm-alpine-83"]
+  cache-to   = ["type=registry,ref=${REGISTRY}/wordpress:cache-fpm-alpine-83,mode=max"]
+  platforms  = ["linux/amd64", "linux/arm64"]
 }
 
