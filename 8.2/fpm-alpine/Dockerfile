@@ -1,6 +1,6 @@
 ARG PHPREDIS_VERSION=6.0.2
 
-FROM wordpress:8.2-fpm-alpine
+FROM wordpress:php8.2-fpm-alpine
 
 ARG PHPREDIS_VERSION
 
