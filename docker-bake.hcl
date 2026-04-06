@@ -9,7 +9,7 @@ variable "PHPREDIS_VERSION" {
 # ── groups ────────────────────────────────────────────────────────────────────
 
 group "default" {
-  targets = ["apache-83", "apache-82", "fpm-alpine-83", "fpm-alpine-82"]
+  targets = ["apache-83", "apache-82", "fpm-alpine-83"]
 }
 
 group "apache" {
@@ -17,7 +17,7 @@ group "apache" {
 }
 
 group "fpm-alpine" {
-  targets = ["fpm-alpine-83", "fpm-alpine-82"]
+  targets = ["fpm-alpine-83"]
 }
 
 # ── apache ────────────────────────────────────────────────────────────────────
@@ -59,13 +59,3 @@ target "fpm-alpine-83" {
   platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "fpm-alpine-82" {
-  dockerfile = "8.2/fpm-alpine/Dockerfile"
-  args = {
-    PHPREDIS_VERSION = PHPREDIS_VERSION
-  }
-  tags = [
-    "${REGISTRY}/wordpress:8.2-fpm-alpine",
-  ]
-  platforms = ["linux/amd64", "linux/arm64"]
-}
